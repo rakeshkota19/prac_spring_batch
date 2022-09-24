@@ -1,4 +1,4 @@
-package com.vikkyraki.prac_spring_batch;
+package com.vikkyraki.prac_spring_batch.deciders;
 
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.StepExecution;
@@ -11,10 +11,14 @@ import java.util.Random;
 
 
 public class PaymentDecider implements JobExecutionDecider {
+
     @Override
     public FlowExecutionStatus decide(JobExecution jobExecution, StepExecution stepExecution) {
-        String exitStatus = new Random().nextFloat() < .70f ? "CORRECT" : "INCORRECT";
+
+        String exitStatus = new Random().nextFloat() < .10f ? "CORRECT" : "INCORRECT";
         System.out.println("Payment decider exit status is " +  exitStatus);
         return new FlowExecutionStatus(exitStatus);
+
     }
+
 }
